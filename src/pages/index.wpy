@@ -1,0 +1,115 @@
+<style lang="less">
+@tabbarHeight: 60px;
+.tab-bar {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: @tabbarHeight;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #fff;
+  & > .item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    &.active {
+      color: red;
+    }
+  }
+}
+.tab-container {
+  margin-bottom: @tabbarHeight;
+  width: 100%;
+  & > .tab-content {
+    display: none;
+    &.active {
+      display: block;
+    }
+  }
+}
+.channel-bar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+.channel-wrapper {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+</style>
+
+<template>
+  <view class="container">
+    <view class="tab-container">
+      <view class="tab-content active">
+        <swiper style="height:150px; width:100%" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}">
+          <repeat for="{{imgUrls}}">
+            <swiper-item>
+              <image src="{{item}}" class="slide-image" style="width:100%; height:150px;" />
+            </swiper-item>
+          </repeat>
+        </swiper>
+        <view class="channel-bar">
+          <view class="channel-wrapper">
+            <text>训练营</text>
+          </view>
+          <view class="channel-wrapper">
+            <text>训练营</text>
+          </view>
+          <view class="channel-wrapper">
+            <text>训练营</text>
+          </view>
+          <view class="channel-wrapper">
+            <text>训练营</text>
+          </view>
+        </view>
+        <view class="">
+        </view>
+      </view>
+      <view class="tab-content">
+        content 2
+      </view>
+      <view class="tab-content">
+        content 3
+      </view>
+    </view>
+    <view class="tab-bar">
+      <view class="item active">首页</view>
+      <view class="item">消息</view>
+      <view class="item">我的</view>
+    </view>
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+export default class Index extends wepy.page {
+  config = {
+    navigationBarTitleText: '标题'
+  };
+  components = {};
+  data = {
+    imgUrls: [
+      'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
+      'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
+      'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
+    ],
+    indicatorDots: true,
+    autoplay: true,
+    interval: 3000,
+    duration: 300,
+    circular: true
+  };
+  computed = {};
+  methods = {};
+  events = {};
+  onLoad() {}
+}
+</script>
