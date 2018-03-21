@@ -15,12 +15,34 @@ import 'wepy-async-function';
 
 export default class extends wepy.app {
   config = {
-    pages: ['pages/index'],
+    pages: ['pages/index', 'pages/msg', 'pages/me', 'pages/class'],
     window: {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#fff',
       navigationBarTitleText: 'WeChat',
       navigationBarTextStyle: 'black'
+    },
+    tabBar: {
+      color: '#AEADAD',
+      selectedColor: '#049BFF',
+      backgroundColor: '#fff',
+      borderStyle: 'black',
+      list: [
+        {
+          pagePath: 'pages/index',
+          // selectedIconPath: './images/tabbars/icon-mark-active@2x.png',
+          // iconPath: './images/tabbars/icon-mark@2x.png',
+          text: '首页'
+        },
+        {
+          pagePath: 'pages/msg',
+          text: '消息'
+        },
+        {
+          pagePath: 'pages/me',
+          text: '我的'
+        }
+      ]
     }
   };
 
@@ -33,22 +55,7 @@ export default class extends wepy.app {
     this.use('requestfix');
   }
 
-  onLaunch() {
-    this.testAsync();
-  }
-
-  sleep(s) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve('promise resolved');
-      }, s * 1000);
-    });
-  }
-
-  async testAsync() {
-    const data = await this.sleep(3);
-    console.log(data);
-  }
+  onLaunch() {}
 
   getUserInfo(cb) {
     const that = this;

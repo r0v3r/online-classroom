@@ -47,9 +47,7 @@
 
 <template>
   <view class="container">
-    <view class="tab-container">
-      <view class="tab-content active">
-        <swiper style="height:150px; width:100%" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}">
+            <swiper style="height:150px; width:100%" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}">
           <repeat for="{{imgUrls}}">
             <swiper-item>
               <image src="{{item}}" class="slide-image" style="width:100%; height:150px;" />
@@ -57,7 +55,7 @@
           </repeat>
         </swiper>
         <view class="channel-bar">
-          <view class="channel-wrapper">
+          <view class="channel-wrapper" @tap="onClick">
             <text>训练营</text>
           </view>
           <view class="channel-wrapper">
@@ -70,21 +68,6 @@
             <text>训练营</text>
           </view>
         </view>
-        <view class="">
-        </view>
-      </view>
-      <view class="tab-content">
-        content 2
-      </view>
-      <view class="tab-content">
-        content 3
-      </view>
-    </view>
-    <view class="tab-bar">
-      <view class="item active">首页</view>
-      <view class="item">消息</view>
-      <view class="item">我的</view>
-    </view>
   </view>
 </template>
 
@@ -108,7 +91,11 @@ export default class Index extends wepy.page {
     circular: true
   };
   computed = {};
-  methods = {};
+  methods = {
+    onClick() {
+      this.$navigate('class');
+    }
+  };
   events = {};
   onLoad() {}
 }

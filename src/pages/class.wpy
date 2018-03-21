@@ -1,0 +1,20 @@
+<template>
+    <view>
+        <view class="btn-area">
+            <navigator open-type="navigateBack">返回</navigator>
+        </view>
+    </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+export default class Class extends wepy.page {
+  config = {
+    navigationBarTitleText: '我的'
+  };
+  onLoad() {
+    wepy.showNavigationBarLoading();
+  }
+}
+</script>
+
